@@ -1,0 +1,141 @@
+<!DOCTYPE html><html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vaquinha Solidária</title>
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background: #2e7d32;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+    .container {
+      max-width: 900px;
+      margin: 30px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      color: #2e7d32;
+    }
+    .campaign-image {
+      width: 100%;
+      max-height: 400px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+    .progress {
+      background: #e0e0e0;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 15px 0;
+    }
+    .progress-bar {
+      height: 25px;
+      width: 45%; /* ajuste conforme o valor arrecadado */
+      background: #2e7d32;
+      text-align: center;
+      color: white;
+      line-height: 25px;
+      font-weight: bold;
+    }
+    .values {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-weight: bold;
+    }
+    .pix-box {
+      background: #f1f8f4;
+      border: 2px dashed #2e7d32;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: center;
+      margin-top: 25px;
+    }
+    .pix-box strong {
+      font-size: 18px;
+    }
+    footer {
+      text-align: center;
+      padding: 15px;
+      background: #ddd;
+      margin-top: 30px;
+    }
+  </style>
+</head>
+<body>  <header>
+    <h1>Vaquinha Solidária</h1>
+    <p>Ajude essa causa e faça a diferença ❤️</p>
+  </header>  <div class="container"><!-- FOTO DA CAMPANHA -->
+<img src="foto-da-campanha.jpg" alt="Foto da campanha" class="campaign-image" />
+
+<h2>Descrição da campanha</h2>
+<p>
+  Aqui você pode escrever a história da vaquinha, explicar o motivo da arrecadação,
+  para quem é a ajuda e como o dinheiro será utilizado. Quanto mais clara e humana
+  for a descrição, maior a chance de receber apoio.
+</p>
+
+<h2>Progresso da arrecadação</h2>
+<div class="values">
+  <span>Arrecadado: R$ 4.500,00</span>
+  <span>Meta: R$ 10.000,00</span>
+</div>
+
+<div class="progress">
+  <div class="progress-bar">45%</div>
+</div>
+
+<h2>Como ajudar</h2>
+<p>
+  Faça sua doação via Pix utilizando a chave abaixo. Qualquer valor é bem-vindo 🙏
+</p>
+
+<div class="pix-box">
+  <p>Chave Pix:</p>
+  <strong id="pixKey">seu-pix-aqui@email.com</strong>
+  <p>(Nome do beneficiário)</p>
+  <button onclick="copiarPix()" style="margin-top:15px;padding:10px 20px;font-size:16px;border:none;border-radius:5px;background:#2e7d32;color:#fff;cursor:pointer;">
+    Copiar chave Pix
+  </button>
+
+  <button onclick="compartilharWhatsApp()" style="margin-top:10px;padding:10px 20px;font-size:16px;border:none;border-radius:5px;background:#25D366;color:#fff;cursor:pointer;">
+    Compartilhar no WhatsApp
+  </button>
+
+  <p id="copyMsg" style="color:green;margin-top:10px;display:none;">Chave Pix copiada com sucesso ✅</p>
+</div>
+
+  </div>  <footer>
+    <p>© 2026 - Vaquinha Solidária | Obrigado pelo apoio</p>
+  </footer><script>
+    function copiarPix() {
+      const pix = document.getElementById('pixKey').innerText;
+      navigator.clipboard.writeText(pix).then(() => {
+        document.getElementById('copyMsg').style.display = 'block';
+      });
+    }
+
+    function compartilharWhatsApp() {
+      const pix = document.getElementById('pixKey').innerText;
+      const mensagem = `Olá! Estou ajudando nesta vaquinha solidária 🙏
+
+Chave Pix para doação:
+${pix}`;
+      const url = `https://wa.me/?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, '_blank');
+    });
+    }
+  </script></body>
+</html>

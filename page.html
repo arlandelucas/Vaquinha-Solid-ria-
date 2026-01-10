@@ -90,6 +90,7 @@
 <body><header>
   <h1>Vaquinha Solidária</h1>
   <p>Ajude essa causa e faça a diferença ❤️</p>
+  <p>Joaquim de luca 👇</p>
 </header><div class="container">  <!-- FOTO DA CAMPANHA -->  <img src="foto-da-campanha.jpg" alt="Foto da campanha" class="campaign-image" />  <h2>Descrição da campanha</h2>
   <p>
     Prezados,<br><br>
@@ -105,10 +106,10 @@
     Agradecemos imensamente todo apoio e solidariedade.
   </p>  <h2>Progresso da arrecadação</h2>
   <div class="values">
-    <span>Arrecadado: R$ 0,00</span>
-    <span>Meta: R$ 6.000,00</span>
+    <span>Arrecadado: R$ <strong id="valorArrecadado">200</strong></span>
+    <span>Meta: R$ <strong id="valorMeta">6000</strong></span>
   </div>  <div class="progress">
-    <div class="progress-bar">0%</div>
+    <div class="progress-bar" id="progressBar">0%</div>
   </div>  <h2>Como ajudar</h2>
   <p>Faça sua doação via Pix. Qualquer valor é bem-vindo 🙏</p>  <div class="pix-box">
     <p><strong>Chave Pix</strong></p>
@@ -122,6 +123,20 @@
   </div></div><footer>
   <p>© 2026 - Vaquinha Solidária | Obrigado pelo apoio</p>
 </footer><script>
+  function atualizarProgresso() {
+    const arrecadado = parseFloat(document.getElementById('valorArrecadado').innerText);
+    const meta = parseFloat(document.getElementById('valorMeta').innerText);
+
+    if (meta > 0) {
+      const percentual = Math.min((arrecadado / meta) * 100, 100).toFixed(1);
+      const barra = document.getElementById('progressBar');
+      barra.style.width = percentual + '%';
+      barra.innerText = percentual + '%';
+    }
+  }
+
+  atualizarProgresso();
+
   function copiarPix() {
     const pix = document.getElementById('pixKey').innerText;
     navigator.clipboard.writeText(pix).then(() => {
@@ -131,13 +146,27 @@
 
   function compartilharWhatsApp() {
     const pix = document.getElementById('pixKey').innerText;
-    const mensagem = `🙏 Vaquinha Solidária 🙏\n\nAjude meu pai no tratamento contra o câncer no olho.\n\n💚 Chave Pix:\n${pix}\n\nQualquer valor faz a diferença!`;
+    const mensagem = `🙏 Vaquinha Solidária 🙏
+
+Ajude meu pai no tratamento contra o câncer no olho.
+
+💚 Chave Pix:
+${pix}
+
+Qualquer valor faz a diferença!`;
     window.open(`https://wa.me/?text=${encodeURIComponent(mensagem)}`, '_blank');
   }
 
   function statusWhatsApp() {
     const pix = document.getElementById('pixKey').innerText;
-    const mensagem = `🙏 Vaquinha Solidária 🙏\n\nAjude meu pai no tratamento contra o câncer no olho.\n\n💚 Pix:\n${pix}\n\nCompartilhe por favor!`;
+    const mensagem = `🙏 Vaquinha Solidária 🙏
+
+Ajude meu pai no tratamento contra o câncer no olho.
+
+💚 Pix:
+${pix}
+
+Compartilhe por favor!`;
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(mensagem)}`, '_blank');
   }
 </script></body>
